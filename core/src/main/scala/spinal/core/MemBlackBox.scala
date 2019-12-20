@@ -28,6 +28,7 @@ class Ram_1w_1ra(
   wordWidth      : Int,
   wordCount      : Int,
   technology     : MemTechnologyKind = auto,
+  userLabel      : String = "",
   readUnderWrite : ReadUnderWritePolicy = dontCare,
 
   wrAddressWidth : Int,
@@ -46,6 +47,7 @@ class Ram_1w_1ra(
     val wordWidth      = Ram_1w_1ra.this.wordWidth
     val technology     = Ram_1w_1ra.this.technology.technologyKind
     val readUnderWrite = Ram_1w_1ra.this.readUnderWrite.readUnderWriteString
+    val userLabel      = Ram_1w_1ra.this.userLabel
 
     val wrAddressWidth = Ram_1w_1ra.this.wrAddressWidth
     val wrDataWidth    = Ram_1w_1ra.this.wrDataWidth
@@ -85,6 +87,7 @@ class Ram_1w_1rs(
   wordCount      : Int,
   readUnderWrite : ReadUnderWritePolicy = dontCare,
   technology     : MemTechnologyKind = auto,
+  userLabel      : String = "",
 
   wrClock        : ClockDomain,
   wrAddressWidth : Int,
@@ -103,6 +106,7 @@ class Ram_1w_1rs(
     var clockCrossing  = wrClock != rdClock
     val technology     = Ram_1w_1rs.this.technology.technologyKind
     val readUnderWrite = Ram_1w_1rs.this.readUnderWrite.readUnderWriteString
+    val userLabel      = Ram_1w_1rs.this.userLabel
 
     val wrAddressWidth = Ram_1w_1rs.this.wrAddressWidth
     val wrDataWidth    = Ram_1w_1rs.this.wrDataWidth
@@ -230,6 +234,7 @@ class Ram_1wrs(
   wordWidth      : Int,
   wordCount      : Int,
   technology     : MemTechnologyKind,
+  userLabel      : String = "",
   readUnderWrite : ReadUnderWritePolicy = dontCare,
   maskWidth      : Int,
   maskEnable     : Boolean
@@ -242,6 +247,7 @@ class Ram_1wrs(
     val technology     = Ram_1wrs.this.technology.technologyKind
     val maskWidth      = Ram_1wrs.this.maskWidth
     val maskEnable     = Ram_1wrs.this.maskEnable
+    val userLabel      = Ram_1wrs.this.userLabel
   }
 
   val io = new Bundle {
@@ -266,6 +272,7 @@ class Ram_2wrs(
   wordWidth            : Int,
   wordCount            : Int,
   technology           : MemTechnologyKind,
+  userLabel            : String = "",
 
   portA_readUnderWrite : ReadUnderWritePolicy = dontCare,
   portA_clock          : ClockDomain,
@@ -287,6 +294,7 @@ class Ram_2wrs(
     val wordWidth     = Ram_2wrs.this.wordWidth
     var clockCrossing = portA_clock != portB_clock
     val technology    = Ram_2wrs.this.technology.technologyKind
+    val userLabel     = Ram_2wrs.this.userLabel
 
     val portA_readUnderWrite = Ram_2wrs.this.portA_readUnderWrite.readUnderWriteString
     val portA_addressWidth   = Ram_2wrs.this.portA_addressWidth

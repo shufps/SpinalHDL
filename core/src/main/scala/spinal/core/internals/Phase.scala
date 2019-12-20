@@ -760,7 +760,8 @@ class PhaseMemBlackBoxingDefault(policy: MemBlackboxingPolicy) extends PhaseMemB
             wrMaskWidth = if (wr.mask != null) wr.mask.getWidth else 1,
             wrMaskEnable = wr.mask != null,
             readUnderWrite = rd.readUnderWrite,
-            technology = mem.technology
+            technology = mem.technology,
+            userLabel = mem.userLabel
           )
 
           ram.io.wr.en := wrapBool(wr.writeEnable) && clockDomain.isClockEnableActive
@@ -792,7 +793,8 @@ class PhaseMemBlackBoxingDefault(policy: MemBlackboxingPolicy) extends PhaseMemB
             wrMaskWidth = if (wr.mask != null) wr.mask.getWidth else 1,
             wrMaskEnable = wr.mask != null,
             readUnderWrite = rd.readUnderWrite,
-            technology = mem.technology
+            technology = mem.technology,
+            userLabel = mem.userLabel
           )
 
           ram.io.wr.en := wrapBool(wr.writeEnable) && wr.clockDomain.isClockEnableActive
@@ -824,7 +826,8 @@ class PhaseMemBlackBoxingDefault(policy: MemBlackboxingPolicy) extends PhaseMemB
           technology = mem.technology,
           readUnderWrite = dontCare,
           maskWidth = if (port.mask != null) port.mask.getWidth else 1,
-          maskEnable = port.mask != null
+          maskEnable = port.mask != null,
+          userLabel = mem.userLabel
         )
 
         ram.io.addr.assignFrom(port.address)
@@ -863,7 +866,8 @@ class PhaseMemBlackBoxingDefault(policy: MemBlackboxingPolicy) extends PhaseMemB
           portB_addressWidth = portB.address.getWidth,
           portB_dataWidth = portB.getWidth,
           portB_maskWidth = if (portB.mask != null) portB.mask.getWidth else 1,
-          portB_maskEnable = portB.mask != null
+          portB_maskEnable = portB.mask != null,
+          userLabel = mem.userLabel
         )
 
         ram.io.portA.addr.assignFrom(portA.address)

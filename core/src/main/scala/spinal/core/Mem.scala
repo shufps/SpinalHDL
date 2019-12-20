@@ -102,6 +102,7 @@ class Mem[T <: Data](val wordType: HardType[T], val wordCount: Int) extends Decl
   def byteCount = ((width+7)/8)*wordCount
 
   var technology: MemTechnologyKind = auto
+  var userLabel: String = ""
   def setTechnology(tech: MemTechnologyKind) = this.technology = tech
 
 //  val ports = ArrayBuffer[Any]()
